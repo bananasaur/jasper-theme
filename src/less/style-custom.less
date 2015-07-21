@@ -110,6 +110,145 @@
     font-style: italic;
 }
 
+/* Jasper Icons */
+@font-face {
+  font-family: "jasper-icons";
+  src:url("../fonts/jasper-icons/jasper-icons.eot");
+  src:url("../fonts/jasper-icons/jasper-icons.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/jasper-icons/jasper-icons.woff") format("woff"),
+    url("../fonts/jasper-icons/jasper-icons.ttf") format("truetype"),
+    url("../fonts/jasper-icons/jasper-icons.svg#icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon-vsco:before {
+  content: "\e60a";
+}
+.icon-arrow_back:before {
+  content: "\e602";
+}
+.icon-behance:before {
+  content: "\e607";
+}
+.icon-clear:before {
+  content: "\e609";
+}
+.icon-stats:before {
+  content: "\e610";
+}
+.icon-flickr2:before {
+  content: "\e614";
+}
+.icon-github2:before {
+  content: "\e616";
+}
+.icon-globe:before {
+  content: "\e61a";
+}
+.icon-google-plus:before {
+  content: "\e61b";
+}
+.icon-instagram:before {
+  content: "\e61c";
+}
+.icon-keyboard_control:before {
+  content: "\e61d";
+}
+.icon-link:before {
+  content: "\e61f";
+}
+.icon-linkedin:before {
+  content: "\e620";
+}
+.icon-map2:before {
+  content: "\e626";
+}
+.icon-menu:before {
+  content: "\e628";
+}
+.icon-paperplane:before {
+  content: "\e62c";
+}
+.icon-pinterest:before {
+  content: "\e62f";
+}
+.icon-rss:before {
+  content: "\e631";
+}
+.icon-spotify:before {
+  content: "\e632";
+}
+.icon-steam2:before {
+  content: "\e633";
+}
+.icon-tumblr:before {
+  content: "\e636";
+}
+.icon-twitter:before {
+  content: "\e637";
+}
+.icon-vimeo:before {
+  content: "\e639";
+}
+.icon-vine:before {
+  content: "\e63a";
+}
+.icon-youtube:before {
+  content: "\e63c";
+}
+.icon-camera:before {
+  content: "\e600";
+}
+.icon-keyboard_arrow_left:before {
+  content: "\e110";
+}
+.icon-keyboard_backspace:before {
+  content: "\e113";
+}
+.icon-check:before {
+  content: "\e206";
+}
+.icon-share:before {
+  content: "\e25a";
+}
+.icon-favorite:before {
+  content: "\e291";
+}
+.icon-favorite_outline:before {
+  content: "\e292";
+}
+.icon-zoom_in:before {
+  content: "\e311";
+}
+.icon-zoom_out:before {
+  content: "\e312";
+}
+.icon-facebook:before {
+  content: "\f09a";
+}
+.icon-facebook-f:before {
+  content: "\f09a";
+}
+// .icon-chevron-thin-left:before {
+.icon-arrow-left:before {
+  content: "\e603";
+}
+.icon-location:before {
+  content: "\e604";
+}
+.icon-soundcloud:before {
+  content: "\e601";
+}
+.icon-html5:before {
+  content: "\e605";
+}
+.icon-css3:before {
+  content: "\e606";
+}
+.icon-codepen:before {
+  content: "\e608";
+}
 
 /* Import the font file with the icons in it */
 @font-face {
@@ -125,7 +264,7 @@
 
 /* Apply these base styles to all icons */
 [class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "casper-icons", @font-sans-serif, sans-serif;
+  font-family: "jasper-icons", @font-sans-serif, sans-serif;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -145,29 +284,29 @@
 .icon-feed:before {
   content: "\f601";
 }
-.icon-twitter:before {
-  content: "\f602";
-  font-size: 1.1em;
-}
-.icon-google-plus:before {
-  content: "\f603";
-}
-.icon-facebook:before {
-  content: "\f604";
-}
-.icon-arrow-left:before {
-  content: "\f605";
-}
-.icon-stats:before {
-  content: "\f606";
-}
-.icon-location:before {
-  content: "\f607";
-  margin-left: -3px; /* Tracking fix */
-}
-.icon-link:before {
-  content: "\f608";
-}
+// .icon-twitter:before {
+//   content: "\f602";
+//   font-size: 1.1em;
+// }
+// .icon-google-plus:before {
+//   content: "\f603";
+// }
+// .icon-facebook:before {
+//   content: "\f604";
+// }
+// .icon-arrow-left:before {
+//   content: "\f605";
+// }
+// .icon-stats:before {
+//   content: "\f606";
+// }
+// .icon-location:before {
+//   content: "\f607";
+//   margin-left: -3px; /* Tracking fix */
+// }
+// .icon-link:before {
+//   content: "\f608";
+// }
 
 
 /* ==========================================================================
@@ -479,12 +618,23 @@ margin on the iframe, cause it breaks stuff. */
    4. General - The main styles for the the theme
    ========================================================================== */
 
+.read-next {
+  background: #f9f9f9;
+  width: 100%;
+}
+
+.site-wrapper {
+  position: relative;
+  z-index: 10;
+  min-height: 100%;
+}
+
 /* Big cover image on the home page */
 .main-header {
   position: relative;
   display: table;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   margin-bottom: 5rem;
   text-align: center;
   background: #222 no-repeat center center;
@@ -906,15 +1056,21 @@ body:not(.post-template) .post-title {
   line-height: 1.75em;
 }
 
-.next-footer {
+.next-post {
+  text-decoration: none;
+  float: left;
   height: 36rem;
   position: relative;
   margin: 0;
-  padding: 6rem 0 6rem 0;
-  border-top: @border-color 1px solid;
+  padding: 6rem 0;
   box-sizing: border-box;
-  
-  .next-footer-img {
+  width: 50%;
+
+  &:only-child {
+    width: 100%;
+  }
+
+  .next-post-img {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -936,8 +1092,6 @@ body:not(.post-template) .post-title {
   }
 
   &.no-img {
-    height: 24rem;
-
     .prev-link, h2, h3 {
       text-shadow: none;
       color: #2e2e2e;
@@ -949,12 +1103,12 @@ body:not(.post-template) .post-title {
     }
   }
 
-  .next-footer-text {
+  .next-post-text {
     position: relative;
-    top: 50%;
-    left: 50%;
+    top: 4rem;
     width: 80%;
-    .transform(translateY(-55%) translateX(-50%));
+    margin: 0 auto;
+    // .transform(translateY(0) translateX(-50%));
     z-index: 1;
     text-align: center;
   }
@@ -1193,7 +1347,7 @@ body:not(.post-template) .post-title {
    ========================================================================== */
 
 .post-head.main-header {
-  height: 65%;
+  height: 65vh;
   min-height: 180px;
 }
 
@@ -1205,17 +1359,17 @@ body:not(.post-template) .post-title {
 }
 
 .tag-head.main-header {
-  height: 40%;
+  height: 40vh;
   min-height: 180px;
 }
 
 .author-head.main-header {
-  height: 40%;
+  height: 40vh;
   min-height: 180px;
 }
 
 .no-cover.author-head.main-header {
-  height: 10%;
+  height: 10vh;
   min-height: 100px;
   background: transparent;
 }
@@ -1420,7 +1574,7 @@ body:not(.post-template) .post-title {
 
 /* On page2+ make all the headers smaller */
 .archive-template .main-header {
-  max-height: 30%;
+  max-height: 30vh;
 }
 
 /* On page2+ show extra pagination controls at the top of post list */
@@ -1437,11 +1591,19 @@ body:not(.post-template) .post-title {
   position: relative;
   margin: 8rem 0 0 0;
   padding: 0.5rem 15px;
-  border-top: @border-color 1px solid;
+  // border-top: @border-color 1px solid;
   font-family: @font-sans-serif, sans-serif;
   font-size: 1rem;
   line-height: 1.75em;
   color: #BBC7CC;
+}
+
+.read-next + .site-footer {
+  position: absolute;
+  margin: 0rem 0 0 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .site-footer a {
@@ -1473,6 +1635,17 @@ body:not(.post-template) .post-title {
    ========================================================================== */
 
 @media only screen and (max-width: 900px) {
+
+  .next-post {
+    width: 100%;
+
+    .next-post-text {
+      margin: 0;
+      left: 50%;
+      top: 50%;
+      .transform(translateY(-50%) translateX(-50%));
+    }
+  }
 
   .main-nav {
     padding: 15px;
@@ -1572,12 +1745,12 @@ body:not(.post-template) .post-title {
   }
 
   .post-head.main-header {
-    height:45%;
+    height: 45vh;
   }
 
   .tag-head.main-header,
   .author-head.main-header {
-    height: 30%;
+    height: 30vh;
   }
 
   .no-cover.post-head.main-header {
@@ -1600,15 +1773,15 @@ body:not(.post-template) .post-title {
 
   .main-header {
     margin-bottom: 15px;
-    height: 40%;
+    height: 40vh;
   }
 
   .no-cover.main-header {
-    height: 30%;
+    height: 30vh;
   }
 
   .archive-template .main-header {
-    max-height: 20%;
+    max-height: 20vh;
     min-height: 160px;
     padding: 10% 0;
   }
@@ -1783,16 +1956,12 @@ body:not(.post-template) .post-title {
     margin-top: 1rem;
   }
 
-  .next-footer {
+  .next-post {
     padding: 5rem 0 3rem 0;
     text-align: center;
     height: 28rem;
 
-    &.no-img {
-      height: 18rem;
-    }
-
-    .next-footer-text {
+    .next-post-text {
       .prev-link {
         font-size: 0.8em;
       }
@@ -1857,12 +2026,12 @@ body:not(.post-template) .post-title {
   }
 
   .post-head.main-header {
-    height: 30%;
+    height: 30vh;
   }
 
   .tag-head.main-header,
   .author-head.main-header {
-    height: 20%;
+    height: 20vh;
   }
 
   .author-profile .author-image {

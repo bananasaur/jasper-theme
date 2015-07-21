@@ -9,7 +9,7 @@
 <header class="main-header post-head {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}">
   <nav class="main-nav {{#if image}}overlay{{/if}} clearfix">
     <a class="back-button icon-arrow-left" href="{{@blog.url}}">Home</a>
-    <a class="subscribe-button icon-feed" href="{{@blog.url}}/rss/">Subscribe</a>
+    <a class="subscribe-button icon-rss" href="{{@blog.url}}/rss/">Subscribe</a>
   </nav>
 </header>
 
@@ -61,6 +61,10 @@
 
       <section class="share">
         <h4>Share this post</h4>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{url absolute="true"}}&title={{encode title}}&source={{encode "Eric Lea's Blog"}}"
+          onclick="window.open(this.href, 'linkedin-share', 'width=550,height=235');return false;">
+          <span class="hidden">LinkedIn</span>
+        </a>
         <a class="icon-twitter" href="https://twitter.com/share?text={{encode title}}&amp;url={{url absolute="true"}}"
           onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
           <span class="hidden">Twitter</span>
@@ -69,27 +73,41 @@
           onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
           <span class="hidden">Facebook</span>
         </a>
-        <a class="icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
+        {{!-- <a class="icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
            onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
           <span class="hidden">Google+</span>
-        </a>
+        </a> --}}
       </section>
 
     </footer>
 
   </article>
-  {{! NEXT POST PREVIEW}}
+</main>
+
+{{! NEXT POST PREVIEW}}
+<aside class="read-next clearfix">
   {{#next_post}}
-  <footer class="next-footer{{^if image}} no-img">{{else}}">
-    <div class="next-footer-img" style="background: url({{image}}) no-repeat; background-size: cover; background-position: center center;"></div>
+  <a href="{{url}}" title="{{title}}" class="next-post{{^if image}} no-img">{{else}}">
+    <div class="next-post-img" style="background: url({{image}}) no-repeat; background-size: cover; background-position: center center;"></div>
     {{/if}}
-    <div class="next-footer-text">
-      <a class="prev-link" title="title" href="{{url}}">Read This Next</a>
+    <div class="next-post-text">
+      <span class="prev-link">Read This Next</span>
       <h2>{{title}}</h2>
       <h3>{{excerpt words="12"}}...</h3>
     </div>
-  </footer>
+  </a>
   {{/next_post}}
-</main>
+  {{#prev_post}}
+  <a href="{{url}}" title="{{title}}" class="next-post{{^if image}} no-img">{{else}}">
+    <div class="next-post-img" style="background: url({{image}}) no-repeat; background-size: cover; background-position: center center;"></div>
+    {{/if}}
+    <div class="next-post-text">
+      <span class="prev-link">You might enjoy</span>
+      <h2>{{title}}</h2>
+      <h3>{{excerpt words="12"}}...</h3>
+    </div>
+  </a>
+  {{/prev_post}}
+</aside>
 
 {{/post}}
