@@ -20,7 +20,6 @@ gulp.task('lint', function() {
 
 gulp.task('less', function() {
   // need to minify css
-  // need to use autoprefix
   return gulp.src('src/less/style-custom.less')
     .pipe(changed('assets/css'))
     .pipe(less())
@@ -41,7 +40,6 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('watch', function() {
-  // do i really want to concat every js file into one scripts file?
   gulp.watch('src/js/**/*.js', ['scripts']);
   gulp.watch('src/less/**/*.less', ['less']);
 });
