@@ -33,23 +33,27 @@
     {{! Everything inside the #author tags pulls data from the author }}
     {{#author}}
 
-      {{#if image}}
-      <figure class="author-image">
-        <a class="img" href="{{url}}" style="background-image: url({{image}})"><span class="hidden">{{name}}'s Picture</span></a>
-      </figure>
-      {{/if}}
-
-      <section class="author">
-        <h4><a href="{{url}}">{{name}}</a></h4>
-
-        {{#if bio}}
-          <p>{{bio}}</p>
-        {{else}}
-          <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+      <section id="author" class="author">
+        {{#if image}}
+        <figure class="author-card-image">
+          <a class="img" href="{{url}}">
+            <img src="{{image}}" />
+            <span class="hidden">{{name}}'s Picture</span>
+          </a>
+        </figure>
         {{/if}}
-        <div class="author-meta">
-          {{#if location}}<span class="author-location icon-location">{{location}}</span>{{/if}}
-          {{#if website}}<span class="author-link icon-link"><a href="{{website}}">{{website}}</a></span>{{/if}}
+
+        <div class="author-card-content">
+          <h4><a href="{{url}}">{{name}}</a></h4>
+          {{#if bio}}
+          <p>{{bio}}</p>
+          {{else}}
+          <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+          {{/if}}
+          <div class="author-meta">
+            {{#if location}}<span class="author-location icon-location">{{location}}</span>{{/if}}
+            {{#if website}}<span class="author-link icon-link"><a href="{{website}}">{{website}}</a></span>{{/if}}
+          </div>
         </div>
       </section>
 
@@ -74,7 +78,18 @@
     </footer>
 
   </article>
-
+  {{! NEXT POST PREVIEW}}
+  {{#prev_post}}
+  <footer class="next-footer{{^if image}} no-img">{{else}}">
+    <div class="next-footer-img" style="background: url({{image}}) no-repeat; background-size: cover; background-position: center center;"></div>
+    {{/if}}
+    <div class="next-footer-text">
+      <a class="prev-link" title="title" href="{{url}}">Read Next</a>
+      <h2>{{title}}</h2>
+      <h3>{{excerpt words="12"}}...</h3>
+    </div>
+  </footer>
+  {{/prev_post}}
 </main>
 
 {{/post}}

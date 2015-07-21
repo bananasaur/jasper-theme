@@ -28,6 +28,7 @@
 @font-serif: "Georgia";
 @font-sans-serif: "texgyreherosbold";
 // @font-sans-serif: "Noto Sans";
+@border-color: #EBF2F6;
 
 /* Mixins */
 .transition(@property; @duration: 1s; @style: ease; @delay: 0s) {
@@ -730,28 +731,9 @@ margin on the iframe, cause it breaks stuff. */
   max-width: 710px;
   margin: 4rem auto;
   padding-bottom: 4rem;
-  border-bottom: #EBF2F6 1px solid;
+  border-bottom: @border-color 1px solid;
   word-break: break-word;
   hyphens: auto;
-}
-
-/* Add a little circle in the middle of the border-bottom on our .post
-   just for the lolz and stylepoints. */
-.post:after {
-  display: block;
-  content: "";
-  width: 7px;
-  height: 7px;
-  border: #E7EEF2 1px solid;
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  margin-left: -5px;
-  background: #FFF;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  border-radius: 100%;
-  box-shadow: #FFF 0 0 0 5px;
 }
 
 body:not(.post-template) .post-title {
@@ -887,11 +869,6 @@ body:not(.post-template) .post-title {
   padding-bottom: 0;
 }
 
-/* Kill that stylish little circle that was on the border, too */
-.post-template .post:after {
-  display: none;
-}
-
 /* Keep images centred and within the bounds of the post-width */
 .post-content img {
   display: block;
@@ -913,19 +890,121 @@ body:not(.post-template) .post-title {
 .post-footer {
   position: relative;
   margin: 6rem 0 0 0;
-  padding: 6rem 0 0 0;
-  border-top: #EBF2F6 1px solid;
+  // padding: 6rem 0 0 0;
+  border-top: @border-color 1px solid;
 }
 
 .post-footer h4 {
   font-size: 1.8rem;
   margin: 0;
+  letter-spacing: 0rem;
 }
 
 .post-footer p {
   margin: 1rem 0;
   font-size: 1.4rem;
   line-height: 1.75em;
+}
+
+.next-footer {
+  height: 36rem;
+  position: relative;
+  margin: 0;
+  padding: 6rem 0 6rem 0;
+  border-top: @border-color 1px solid;
+  box-sizing: border-box;
+  
+  .next-footer-img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.5);
+    }
+  }
+
+  &.no-img {
+    height: 24rem;
+
+    .prev-link, h2, h3 {
+      text-shadow: none;
+      color: #2e2e2e;
+    }
+
+    .prev-link {
+      border-bottom: 1px solid #000;
+      letter-spacing: -0.05rem;
+    }
+  }
+
+  .next-footer-text {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    .transform(translateY(-55%) translateX(-50%));
+    z-index: 1;
+    text-align: center;
+  }
+
+  .prev-link {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    text-align: center;
+    font-family: @font-serif, serif;
+    font-size: 0.8em;
+    font-style: italic;
+    font-weight: 400;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    text-decoration: none;
+    line-height: 1.5em;
+  }
+
+  h2 {
+    color: #fff;
+    margin: 0;
+    margin-top: 0.2em;
+    padding-top: 0em;
+    padding-bottom: 0em;
+    margin-bottom: 0.2em;
+    font-size: 2.2em;
+    line-height: 1.1em;
+    letter-spacing: -0.12rem;
+  }
+
+  h3 {
+    color: #fff;
+    font-family: @font-serif, serif;
+    margin: 0;
+    // font-style: italic;
+    font-weight: normal;
+    margin-top: 0em;
+    padding-top: 0em;
+    padding-bottom: 0em;
+    margin-bottom: 0em;
+    font-size: 1.0em;
+    line-height: 1.2em;
+    letter-spacing: -0.05rem;
+  }
+
+  p {
+    margin: 1rem 0;
+    font-size: 1.4rem;
+    line-height: 1.75em;
+  }
 }
 
 /* list of author links - location / url */
@@ -947,8 +1026,55 @@ body:not(.post-template) .post-title {
 }
 
 /* Create some space to the right for the share links */
-.post-footer .author {
-  margin-right: 180px;
+.author {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  color: rgba(0,0,0,0.6);
+  padding: 6rem 0 0rem;
+  text-align: left;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  font-style: normal;
+  padding-right: 180px;
+  box-sizing: border-box;
+
+  figure.author-card-image {
+    display: table-cell;
+
+    a {
+      display: inline-block;
+      vertical-align: middle;
+      text-decoration: none;
+      cursor: pointer;
+      display: block;
+
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+      }
+    }
+  }
+
+  .author-card-content {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 15px;
+    min-height: 80px;
+    word-break: break-word;
+    word-wrap: break-word;
+
+    h4 {
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 1.4rem;
+      line-height: 1em;
+    }
+  }
 }
 
 .post-footer h4 a {
@@ -969,12 +1095,14 @@ body:not(.post-template) .post-title {
   top: 6rem;
   right: 0;
   width: 140px;
+  text-align: right;
 }
 
 .post-footer .share a {
   font-size: 1.8rem;
+  font-family: @font-sans-serif, sans-serif;
   display: inline-block;
-  margin: 1rem 1.6rem 1.6rem 0;
+  margin: 1rem 0 1.6rem 1.6rem;
   color: #BBC7CC;
   text-decoration: none;
 }
@@ -991,7 +1119,7 @@ body:not(.post-template) .post-title {
   top: -14px;
   left: 50%;
   margin-left: -15px;
-  border: #EBF2F6 1px solid;
+  border: @border-color 1px solid;
   text-align: center;
   line-height: 2.4rem;
   border-radius: 50px;
@@ -1094,7 +1222,7 @@ body:not(.post-template) .post-title {
 
 .author-profile {
   padding: 0 15px 5rem 15px;
-  border-bottom: #EBF2F6 1px solid;
+  border-bottom: @border-color 1px solid;
   text-align: center;
 }
 
@@ -1268,7 +1396,7 @@ body:not(.post-template) .post-title {
 
 .extra-pagination {
   display: none;
-  border-bottom: #EBF2F6 1px solid;
+  border-bottom: @border-color 1px solid;
 }
 .extra-pagination:after {
   display: block;
@@ -1309,7 +1437,7 @@ body:not(.post-template) .post-title {
   position: relative;
   margin: 8rem 0 0 0;
   padding: 0.5rem 15px;
-  border-top: #EBF2F6 1px solid;
+  border-top: @border-color 1px solid;
   font-family: @font-sans-serif, sans-serif;
   font-size: 1rem;
   line-height: 1.75em;
@@ -1655,6 +1783,30 @@ body:not(.post-template) .post-title {
     margin-top: 1rem;
   }
 
+  .next-footer {
+    padding: 5rem 0 3rem 0;
+    text-align: center;
+    height: 28rem;
+
+    &.no-img {
+      height: 18rem;
+    }
+
+    .next-footer-text {
+      .prev-link {
+        font-size: 0.8em;
+      }
+
+      h2 {
+        font-size: 1.6em;
+      }
+
+      h3 {
+        font-size: 0.9em;
+      }
+    }
+  }
+
   .post-footer {
     padding: 5rem 0 3rem 0;
     text-align: center;
@@ -1663,10 +1815,11 @@ body:not(.post-template) .post-title {
   .post-footer .author {
     margin: 0 0 2rem 0;
     padding: 0 0 1.6rem 0;
-    border-bottom: #EBF2F6 1px dashed;
+    border-bottom: @border-color 1px dashed;
   }
 
   .post-footer .share {
+    text-align: center;
     position: static;
     width: auto;
   }
