@@ -79,17 +79,17 @@
 
   </article>
   {{! NEXT POST PREVIEW}}
-  {{#prev_post}}
+  {{#next_post}}
   <footer class="next-footer{{^if image}} no-img">{{else}}">
     <div class="next-footer-img" style="background: url({{image}}) no-repeat; background-size: cover; background-position: center center;"></div>
     {{/if}}
     <div class="next-footer-text">
-      <a class="prev-link" title="title" href="{{url}}">Read Next</a>
+      <a class="prev-link" title="title" href="{{url}}">Read This Next</a>
       <h2>{{title}}</h2>
       <h3>{{excerpt words="12"}}...</h3>
     </div>
   </footer>
-  {{/prev_post}}
+  {{/next_post}}
 </main>
 
 {{/post}}
